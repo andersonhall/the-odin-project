@@ -1,3 +1,3 @@
-import UI from './UI';
+import UI from './modules/UI';
 
-document.addEventListener('DOMContentLoaded', UI.loadHomepage);
+document.body.addEventListener('DOMContentLoaded', UI.loadHome());
