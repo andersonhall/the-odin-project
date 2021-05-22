@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+header {
+  margin: 1rem 0;
+  padding: 1rem 0;
+  color: rgb(42, 150, 0);
+  border-bottom: 3px solid rgb(42, 150, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.main {
+  max-width: 100%;
+  margin: 1rem auto;
+}
+
+.hero-img {
+  border-radius: 10px;
+  max-width: 100%;
+  margin: 1rem auto;
+}
+
+.headline {
+  color: rgb(42, 150, 0);
+  font-size: 2rem;
+  text-align: center;
+}
+
+.nav-btn {
+  border: none;
+  font-size: 1.2rem;
+  background-color: white;
+  padding: 0.2rem 0.4rem;
+  margin: 0 10px;
+  color: rgb(42, 150, 0);
+  border: 2px solid rgb(42, 150, 0);
+}
+
+.nav-btn:hover {
+  color: white;
+  background-color: rgb(42, 150, 0);
+}
+
+.nav-btn:last-child {
+  margin-right: 0;
+}
+
+.menu {
+  border: 2px solid rgb(42, 150, 0);
+  padding: 1rem;
+}
+
+.menu-item {
+  margin-bottom: 1rem;
+}
