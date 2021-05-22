@@ -1,6 +1,6 @@
 import { compareAsc, toDate } from 'date-fns';
 import Project from './Project';
-import Todo from './Todo';
+import Task from './Task';
 
 export default class TodoList {
   constructor() {
@@ -37,36 +37,40 @@ export default class TodoList {
   }
 
   updateTodayProject() {
-    this.getProject('Today').todos = [];
+    this.getProject('Today').tasks = [];
 
     this.projects.forEach(project => {
       if (project.getName() === 'Today' || project.getName() === 'This week') return;
 
-      const todayTodos = project.getTodosToday();
-      todayTodos.forEach(todo => {
-        const todoName = `${todo.getName()} (${project.getName})`;
-        this.getProject('Today').addTodo(new Todo(todoName, todo.getDate()));
+      const todayTasks = project.getTasksToday();
+      todayTasks.forEach(task => {
+        const taskName = `${task.getName()} (${project.getName()})`;
+        this.getProject('Today').addTask(new Task(taskName, task.getDate()));
       });
     });
   }
 
   updateWeekProject() {
-    this.getProject('This week').todos = [];
+    this.getProject('This week').tasks = [];
 
     this.projects.forEach(project => {
       if (project.getName() === 'Today' || project.getName() === 'This week') return;
 
-      const weekTodos = project.getTodosThisWeek();
-      weekTodos.forEach(todo => {
-        const todoName = `${todo.getName()} (${project.getName()})`;
+      const weekTasks = project.getTasksThisWeek();
+      weekTasks.forEach(task => {
+        const taskName = `${task.getName()} (${project.getName()})`;
+        this.getProject('This week').addTask(new Task(taskName, task.getDate()));
       });
     });
 
-    this.getProject('This week').setTodos(
+    this.getProject('This week').setTasks(
       this.getProject('This week')
-        .getTodos()
-        .sort((a, b) =>
-          compareAsc(toDate(new Date(a.getDateFormatted())), toDate(new Date(b.getDateFormatted())))
+        .getTasks()
+        .sort((taskA, taskB) =>
+          compareAsc(
+            toDate(new Date(taskA.getDateFormatted())),
+            toDate(new Date(taskB.getDateFormatted()))
+          )
         )
     );
   }

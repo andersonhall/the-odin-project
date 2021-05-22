@@ -1,5 +1,5 @@
-export default class Todo {
-  constructor(name, dueDate = 'No due date') {
+export default class Task {
+  constructor(name, dueDate = 'No date') {
     this.name = name;
     this.dueDate = dueDate;
   }
@@ -16,7 +16,7 @@ export default class Todo {
     this.dueDate = dueDate;
   }
 
-  getDueDate() {
+  getDate() {
     return this.dueDate;
   }
 

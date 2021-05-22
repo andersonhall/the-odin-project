@@ -14,43 +14,43 @@ export default class Project {
     return this.name;
   }
 
-  setTodos(todos) {
-    this.todos = todos;
+  setTasks(tasks) {
+    this.tasks = tasks;
   }
 
-  getTodos() {
-    return this.todos;
+  getTasks() {
+    return this.tasks;
   }
 
-  getTodo(todoName) {
-    return this.todos.find(todo => todo.getName() === todoName);
+  getTask(taskName) {
+    return this.tasks.find(task => task.getName() === taskName);
   }
 
-  contains(todoName) {
-    return this.todo.some(todo => todo.getName() === todoName);
+  contains(taskName) {
+    return this.tasks.some(task => task.getName() === taskName);
   }
 
-  addTodo(todo) {
-    if (this.todos.indexOf(todo) > 0) return;
-    this.todos.push(todo);
+  addTask(task) {
+    if (this.tasks.indexOf(task) > 0) return;
+    this.tasks.push(task);
   }
 
-  deleteTodo(todoName) {
-    const todoToDelete = this.todos.find(todo => todo.getName() === todoName);
-    this.todos.splice(this.todos.indexOf(todoToDelete), 1);
+  deleteTask(taskName) {
+    const taskToDelete = this.tasks.find(task => task.getName() === taskName);
+    this.tasks.splice(this.tasks.indexOf(taskToDelete), 1);
   }
 
-  getTodosToday() {
-    return this.todos.filter(todo => {
-      const todoDate = new Date(todo.getDateFormatted());
-      return isToday(toDate(todoDate));
+  getTasksToday() {
+    return this.tasks.filter(task => {
+      const taskDate = new Date(task.getDateFormatted());
+      return isToday(toDate(taskDate));
     });
   }
 
-  getTodosThisWeek() {
-    return this.todos.filter(todo => {
-      const todoDate = new Date(todo.getDateFormatted());
-      return isThisWeek(subDays(todoDate), 1);
+  getTasksThisWeek() {
+    return this.tasks.filter(task => {
+      const taskDate = new Date(task.getDateFormatted());
+      return isThisWeek(subDays(toDate(taskDate), 1));
     });
   }
 }
