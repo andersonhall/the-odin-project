@@ -91,6 +91,8 @@ input {
 .sidebar-left ul {
   cursor: pointer;
   list-style-type: none;
+  position: relative;
+  right: 10px;
 }
 
 /* Main Content */
@@ -126,15 +128,16 @@ input {
   color: var(--primary-light);
 }
 
-.fa-tasks {
-  margin-right: 0.4rem;
+.fa-folder {
+  margin-right: 1rem;
+  font-size: 2.7rem;
 }
 
 .project {
-  padding: 0.2rem;
   display: flex;
   align-items: center;
   border-radius: 3px;
+  padding: 0.5rem 10px;
 }
 
 .project:hover {

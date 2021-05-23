@@ -4,6 +4,8 @@ export default class TodoList {
   constructor() {
     this.projects = [];
     this.projects.push(new Project('My Todos'));
+    this.projects.push(new Project('Art Lesson for 5/25'));
+    this.projects.push(new Project('Tuesday class'));
   }
 
   getProjects = () => this.projects;
