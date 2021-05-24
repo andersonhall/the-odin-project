@@ -5,18 +5,21 @@ import TodoList from './TodoList';
 export default class UI {
   static loadHome = () => {
     UI.loadProjects();
+    UI.loadTodos('My Todos');
   };
 
   static loadProjects() {
     const todoList = new TodoList();
-    console.log(todoList.getProjects());
     todoList.getProjects().forEach(project => {
       UI.createProject(project.name);
     });
   }
 
   static loadTodos(projectName) {
-    // load todos for a specific project
+    const todoList = new TodoList();
+    todoList.getProject(projectName).getTodos().forEach(todo => {
+      UI.createTodo(todo);
+    })
   }
 
   static createProject = name => {
@@ -29,12 +32,12 @@ export default class UI {
     `;
   };
 
-  static createTodo(title, description, dueDate, priority, isDone) {
+  static createTodo(todo) {
     const todoList = document.querySelector('.todos');
     todoList.innerHTML += `
     <li class='todo'>
     <i class='fas fa-circle'></i>
-    <span>${title}</span>
+    <span>${todo.title}</span>
   </li>
     `;
   }
