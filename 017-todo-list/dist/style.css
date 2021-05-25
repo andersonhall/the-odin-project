@@ -58,6 +58,20 @@ input {
   outline: none;
 }
 
+table, th, td {
+  /* border: 1px solid var(--primary-dark); */
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 0.4rem 1rem;
+}
+
+th, tr:nth-child(even) {
+  background-color: var(--secondary-light);
+}
+
 /* Header */
 
 .header {
@@ -91,14 +105,21 @@ input {
 .sidebar-left ul {
   cursor: pointer;
   list-style-type: none;
-  position: relative;
-  right: 10px;
+  margin-left: -10px;
 }
 
 /* Main Content */
 .main-content {
   flex: 3;
   padding: 2rem 3rem;
+}
+
+.todo {
+  margin-left: 5px;
+}
+
+.todo:hover {
+  cursor: pointer;
 }
 
 /* Footer */
@@ -133,6 +154,10 @@ input {
   font-size: 2.7rem;
 }
 
+.fa-circle, .fa-check-circle {
+  margin-right: 0.6rem;
+}
+
 .project {
   display: flex;
   align-items: center;
@@ -140,7 +165,7 @@ input {
   padding: 0.5rem 10px;
 }
 
-.project:hover {
+.project:hover, .todo:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-light);
 }

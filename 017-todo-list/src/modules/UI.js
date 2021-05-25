@@ -3,6 +3,8 @@ import Todo from './Todo';
 import TodoList from './TodoList';
 
 export default class UI {
+  currentProject = null;
+
   static loadHome = () => {
     UI.loadProjects();
     UI.loadTodos('My Todos');
@@ -16,6 +18,8 @@ export default class UI {
   }
 
   static loadTodos(projectName) {
+    const currentProjectTitle = document.querySelector('.current-project-title');
+    currentProjectTitle.textContent = projectName;
     const todoList = new TodoList();
     todoList.getProject(projectName).getTodos().forEach(todo => {
       UI.createTodo(todo);
@@ -35,10 +39,20 @@ export default class UI {
   static createTodo(todo) {
     const todoList = document.querySelector('.todos');
     todoList.innerHTML += `
-    <li class='todo'>
-    <i class='fas fa-circle'></i>
-    <span>${todo.title}</span>
-  </li>
+    <tr class="todo" style='border-left: 5px solid ${todo.priority === 'high' ? 'red' : todo.priority === 'med' ? 'yellow' : 'green'}'>
+      <td>
+        <i class='far fa-${todo.isDone ? 'check-circle' : 'circle'}'></i>
+      </td>
+      <td>
+      <span class='todo-title' ${todo.isDone ? 'style="text-decoration: line-through; font-style: italic"' : ''}>${todo.title}</span>
+      </td>
+      <td>
+        <span class='todo-dueDate'>${todo.dueDate}</span>
+      </td>
+      <td>
+        <i class='fas fa-trash-alt'></i>
+      </td>
+    </tr>
     `;
   }
 }

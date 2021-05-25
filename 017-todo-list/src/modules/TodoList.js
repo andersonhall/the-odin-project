@@ -7,8 +7,9 @@ export default class TodoList {
   constructor() {
     // for testing set up some todos
     const project1 = new Project('My Todos');
-    const todo = new Todo('todo1', 'desc', '2021-05-29', 'high', false)
-    project1.setTodos([todo])
+    const todo = new Todo('take out the garbage', 'longer description of a todo', '2021-05-29', 'high', false)
+    const todo2 = new Todo('work on projects', 'desc2', 'No due date', 'low', true);
+    project1.setTodos([todo, todo2])
     //
     this.projects = [];
     this.projects.push(project1);
