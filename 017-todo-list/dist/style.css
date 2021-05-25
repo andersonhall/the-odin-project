@@ -59,7 +59,6 @@ input {
 }
 
 table, th, td {
-  /* border: 1px solid var(--primary-dark); */
   border-collapse: collapse;
   text-align: left;
 }
@@ -94,7 +93,7 @@ th, tr:nth-child(even) {
 
 /* Left Sidebar */
 .sidebar-left {
-  flex: 1;
+  flex: 2;
   min-width: 200px;
   max-width: 300px;
   background-color: var(--secondary-light);
@@ -110,7 +109,11 @@ th, tr:nth-child(even) {
 
 /* Main Content */
 .main-content {
+  display: flex;
   flex: 3;
+}
+
+.main-content-left, .main-content-right {
   padding: 2rem 3rem;
 }
 
@@ -161,11 +164,35 @@ th, tr:nth-child(even) {
 .project {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-radius: 3px;
   padding: 0.5rem 10px;
 }
 
-.project:hover, .todo:hover {
+.project:hover, .todo:hover, .btn-add-project:hover, .form-add-project button:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-light);
+}
+
+/* Project Form */
+.form-add-project {
+  display: none;
+}
+
+.form-add-project input {
+  border: none;
+  font-size: 2rem;
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.form-add-project button {
+  padding: .3rem;
+  margin: 5px auto;
+  width: 100%;
+}
+
+.show {
+  display: inherit;
 }
