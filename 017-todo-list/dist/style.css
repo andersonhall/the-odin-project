@@ -152,9 +152,9 @@ th, tr:nth-child(even) {
   color: var(--primary-light);
 }
 
-.fa-folder {
+.fa-folder, .fa-folder-open {
   margin-right: 1rem;
-  font-size: 2.7rem;
+  font-size: 2rem;
 }
 
 .fa-circle, .fa-check-circle {
@@ -169,7 +169,7 @@ th, tr:nth-child(even) {
   padding: 0.5rem 10px;
 }
 
-.project:hover, .todo:hover, .btn-add-project:hover, .form-add-project button:hover {
+.project:hover, .active-project, .todo:hover, .btn-add-project:hover, .form-add-project button:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-light);
 }
