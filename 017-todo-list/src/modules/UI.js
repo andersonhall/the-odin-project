@@ -4,10 +4,9 @@ import TodoList from "./TodoList";
 import Storage from "./Storage";
 
 export default class UI {
-  currentProject = null;
-
   static loadHome = () => {
     UI.loadProjects();
+    UI.initProjects();
     UI.loadTodos("My Todos");
   };
 
@@ -18,16 +17,22 @@ export default class UI {
     todoList.getProjects().forEach((project) => {
       UI.createProject(project.name);
     });
-    UI.initProjects();
   }
 
   static initProjects() {
     const btn = document.querySelector(".btn-project-form");
     btn.addEventListener("click", UI.toggleAddProjectForm);
 
-    const btnAdd = document.querySelector(".form-add-project .btn-add");
-    const btnCancel = document.querySelector(".form-add-project .btn-cancel");
+    const deleteBtns = document.querySelectorAll('.btn-delete-project');
+    deleteBtns.forEach(btn => {
+      btn.addEventListener('click', e => {
+        UI.deleteProject(e.target);
+        Storage.deleteProject(e.target.parentElement.parentElement.dataset.name)
+      });
+    })
+
     const input = document.querySelector("#project-name");
+    const btnAdd = document.querySelector(".form-add-project .btn-add");
     btnAdd.addEventListener("click", (e) => {
       const projectName = input.value;
       e.preventDefault();
@@ -35,6 +40,7 @@ export default class UI {
       UI.createProject(projectName);
       UI.toggleAddProjectForm();
     });
+    const btnCancel = document.querySelector(".form-add-project .btn-cancel");
     btnCancel.addEventListener("click", (e) => {
       e.preventDefault();
       UI.toggleAddProjectForm();
@@ -63,7 +69,7 @@ export default class UI {
   static createProject = name => {
     const projects = document.querySelector(".projects");
     projects.innerHTML += `
-      <li class='project'>
+      <li class='project' data-name='${name}'>
         <div>
          <i class='fas fa-folder'></i>
           <span>${name}</span>
@@ -74,6 +80,10 @@ export default class UI {
           </li>
           `;
   };
+
+  static deleteProject(target) {
+    target.parentElement.parentElement.remove();
+  }
 
   static createTodo(todo) {
     const todoList = document.querySelector(".todos");
