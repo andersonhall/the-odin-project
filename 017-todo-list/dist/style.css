@@ -58,16 +58,20 @@ input {
   outline: none;
 }
 
-table, th, td {
+table,
+th,
+td {
   border-collapse: collapse;
   text-align: left;
 }
 
-th, td {
+th,
+td {
   padding: 0.4rem 1rem;
 }
 
-th, tr:nth-child(even) {
+th,
+tr:nth-child(even) {
   background-color: var(--secondary-light);
 }
 
@@ -113,7 +117,8 @@ th, tr:nth-child(even) {
   flex: 3;
 }
 
-.main-content-left, .main-content-right {
+.main-content-left,
+.main-content-right {
   padding: 2rem 3rem;
 }
 
@@ -152,12 +157,14 @@ th, tr:nth-child(even) {
   color: var(--primary-light);
 }
 
-.fa-folder, .fa-folder-open {
+.fa-folder,
+.fa-folder-open {
   margin-right: 1rem;
   font-size: 2rem;
 }
 
-.fa-circle, .fa-check-circle {
+.fa-circle,
+.fa-check-circle {
   margin-right: 0.6rem;
 }
 
@@ -169,7 +176,11 @@ th, tr:nth-child(even) {
   padding: 0.5rem 10px;
 }
 
-.project:hover, .active-project, .todo:hover, .btn-add-project:hover, .form-add-project button:hover {
+.project:hover,
+.active-project,
+.todo:hover,
+.btn-project-form:hover,
+.form-add-project button:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-light);
 }
@@ -188,7 +199,7 @@ th, tr:nth-child(even) {
 }
 
 .form-add-project button {
-  padding: .3rem;
+  padding: 0.3rem;
   margin: 5px auto;
   width: 100%;
 }

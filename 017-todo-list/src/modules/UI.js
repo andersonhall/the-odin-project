@@ -4,13 +4,23 @@ import TodoList from './TodoList';
 import Storage from './Storage';
 
 export default class UI {
-  // static currentProject = 'My Todos';
+  static currentProject = 'My Todos';
 
   static loadHome = () => {
+    UI.initProjectForm();
     UI.loadProjects();
     UI.initProjects();
-    // UI.loadTodos(UI.currentProject);
+    UI.loadTodos(UI.currentProject);
   };
+
+  static initProjectForm() {
+    const btn = document.querySelector('.btn-project-form');
+    btn.addEventListener('click', UI.toggleAddProjectForm);
+    const btnCancel = document.querySelector('.btn-cancel');
+    btnCancel.addEventListener('click', UI.toggleAddProjectForm);
+    const addBtn = document.querySelector('.btn-add');
+    addBtn.addEventListener('click', e => UI.addProject(e));
+  }
 
   static loadProjects() {
     const projects = document.querySelector('.projects');
@@ -22,50 +32,40 @@ export default class UI {
   }
 
   static initProjects() {
-    const btn = document.querySelector('.btn-project-form');
-    btn.addEventListener('click', UI.toggleAddProjectForm);
-    const btnCancel = document.querySelector('.btn-cancel');
-    btnCancel.addEventListener('click', UI.toggleAddProjectForm);
-
     const deleteBtns = document.querySelectorAll('.btn-delete-project');
     deleteBtns.forEach(btn =>
       btn.addEventListener('click', e => {
         const { name } = e.target.dataset;
         Storage.deleteProject(name);
-        UI.loadProjects();
-
-        const addBtn = document.querySelector('.btn-add');
-        addBtn.removeEventListener('click', e => UI.addProject(e));
-        addBtn.addEventListener('click', e => UI.addProject(e));
-        UI.initProjects();
+        UI.reloadProjects();
       })
     );
 
-    // const projects = document.querySelectorAll('.project');
-    // projects.forEach(project => {
-    //   project.addEventListener('click', e => {
-    //     if (!e.target.classList.contains('btn-delete-project')) {
-    //       UI.activateProject(project.dataset.name);
-    //     }
-    //   });
-    // });
+    const projects = document.querySelectorAll('.project');
+    projects.forEach(project => {
+      project.addEventListener('click', e => {
+        if (!e.target.classList.contains('btn-delete-project')) {
+          UI.activateProject(project.dataset.name);
+        }
+      });
+    });
   }
 
-  // static loadTodos(projectName) {
-  //   const currentProjectTitle = document.querySelector(
-  //     '.current-project-title'
-  //   );
-  //   const todos = document.querySelector('.todos');
-  //   todos.textContent = '';
-  //   currentProjectTitle.textContent = projectName;
-  //   const todoList = Storage.getTodoList();
-  //   todoList
-  //     .getProject(projectName)
-  //     .getTodos()
-  //     .forEach(todo => {
-  //       UI.createTodo(todo);
-  //     });
-  // }
+  static loadTodos(projectName) {
+    const currentProjectTitle = document.querySelector(
+      '.current-project-title'
+    );
+    const todos = document.querySelector('.todos');
+    todos.textContent = '';
+    currentProjectTitle.textContent = projectName;
+    const todoList = Storage.getTodoList();
+    todoList
+      .getProject(projectName)
+      .getTodos()
+      .forEach(todo => {
+        UI.createTodo(todo);
+      });
+  }
 
   static toggleAddProjectForm() {
     const form = document.querySelector('.form-add-project');
@@ -91,6 +91,11 @@ export default class UI {
           `;
   };
 
+  static reloadProjects() {
+    UI.loadProjects();
+    UI.initProjects();
+  }
+
   static addProject(e) {
     e.preventDefault();
     const input = document.querySelector('#project-name');
@@ -98,21 +103,19 @@ export default class UI {
     input.value = '';
     UI.toggleAddProjectForm();
     Storage.addProject(new Project(projectName));
-    // UI.activateProject(projectName);
-    UI.loadProjects();
-    UI.initProjects();
+    UI.activateProject(projectName);
   }
 
-  // static deleteProject(elementToRemove) {
-  //   Storage.deleteProject(elementToRemove.dataset.name);
-  //   elementToRemove.remove();
-  //   UI.loadHome();
-  // }
+  static deleteProject(elementToRemove) {
+    Storage.deleteProject(elementToRemove.dataset.name);
+    elementToRemove.remove();
+    UI.reloadProjects();
+  }
 
-  // static activateProject(projectName) {
-  //   UI.currentProject = projectName;
-  //   UI.loadHome();
-  // }
+  static activateProject(projectName) {
+    UI.currentProject = projectName;
+    UI.reloadProjects();
+  }
 
   static createTodo(todo) {
     const todoList = document.querySelector('.todos');
@@ -145,4 +148,10 @@ export default class UI {
   }
 }
 
-// figure out where to move initialization of form buttons...
+// handle project already exists
+// mark todos done
+// delete todos
+// show todo description
+// edit todo description
+// edit due date
+// display due dates better
