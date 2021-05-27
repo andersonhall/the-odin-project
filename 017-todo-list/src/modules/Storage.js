@@ -31,4 +31,12 @@ export default class Storage {
     todoList.deleteProject(project);
     Storage.saveTodoList(todoList);
   }
+
+  static toggleTodoIsDone(projectToEdit, todoName) {
+    const todoList = Storage.getTodoList();
+    const project = todoList.getProject(projectToEdit);
+    const todoToToggle = project.getTodos().filter(todo => todo.getTitle() === todoName)[0];
+    todoToToggle.setIsDone(!todoToToggle.getIsDone());
+    Storage.saveTodoList(todoList);
+  }
 }

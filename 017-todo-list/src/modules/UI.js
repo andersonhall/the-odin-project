@@ -70,14 +70,19 @@ export default class UI {
   static initTodos() {
     const checkboxes = document.querySelectorAll('.checkbox');
     checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('click', e => UI.toggleTodoIsDone(e.target));
+      checkbox.addEventListener('click', e => {
+        const todo = e.target.parentElement.nextElementSibling.children[0].textContent;
+        Storage.toggleTodoIsDone(UI.currentProject, todo);
+        UI.reloadTodos();
+      });
     });
-    // const deleteBtns = document.querySelectorAll('.btn-delete-project');
+
+    // const deleteBtns = document.querySelectorAll('.delete-todo');
     // deleteBtns.forEach(btn =>
     //   btn.addEventListener('click', e => {
-    //     const { name } = e.target.dataset;
-    //     Storage.deleteProject(name);
-    //     UI.reloadProjects();
+    //     // const todo = e.target.dataset.name;
+    //     // Storage.deleteTodo(todo);
+    //     // UI.reloadTodos();
     //   })
     // );
 
@@ -89,18 +94,6 @@ export default class UI {
     //     }
     //   });
     // });
-  }
-
-  static toggleTodoIsDone(target) {
-    const todoTitle = target.parentElement.nextElementSibling.children[0].textContent;
-    const todoList = Storage.getTodoList();
-    const todo = todoList
-      .getProject(UI.currentProject)
-      .getTodos()
-      .filter(todo => todo.getTitle() === todoTitle)[0];
-    todo.setIsDone(!todo.getIsDone());
-    Storage.saveTodoList(todoList);
-    UI.reloadTodos();
   }
 
   static toggleAddProjectForm() {
@@ -178,7 +171,7 @@ export default class UI {
         <span class='todo-dueDate'>${todo.dueDate}</span>
       </td>
       <td>
-        <i class='fas fa-trash-alt'></i>
+        <i class='fas fa-trash-alt delete-todo'></i>
       </td>
     </tr>
     `;

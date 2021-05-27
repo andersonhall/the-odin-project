@@ -12,8 +12,8 @@ export default class Project {
 
   addTodo = todo => this.todos.push(todo);
 
-  deleteTodo = todo => {
-    const todoToDelete = this.todos.find(todo => todo.getName() === todo);
+  deleteTodo = todoName => {
+    const todoToDelete = this.todos.find(todo => todo.getName() == todoName);
     this.todos.splice(this.todos.indexOf(todoToDelete), 1);
   };
 }
