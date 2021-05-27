@@ -4,17 +4,17 @@ import TodoList from './TodoList';
 import Storage from './Storage';
 
 export default class UI {
-  static currentProject = 'My Todos';
+  // static currentProject = 'My Todos';
 
   static loadHome = () => {
     UI.loadProjects();
     UI.initProjects();
-    UI.loadTodos(UI.currentProject);
+    // UI.loadTodos(UI.currentProject);
   };
 
   static loadProjects() {
     const projects = document.querySelector('.projects');
-    projects.textContent = '';
+    projects.innerHTML = '';
     const todoList = Storage.getTodoList();
     todoList.getProjects().forEach(project => {
       UI.createProject(project.name);
@@ -24,52 +24,48 @@ export default class UI {
   static initProjects() {
     const btn = document.querySelector('.btn-project-form');
     btn.addEventListener('click', UI.toggleAddProjectForm);
+    const btnCancel = document.querySelector('.btn-cancel');
+    btnCancel.addEventListener('click', UI.toggleAddProjectForm);
 
     const deleteBtns = document.querySelectorAll('.btn-delete-project');
     deleteBtns.forEach(btn =>
       btn.addEventListener('click', e => {
-        const elementToRemove = e.target.parentElement.parentElement;
-        UI.deleteProject(elementToRemove);
+        const { name } = e.target.dataset;
+        Storage.deleteProject(name);
+        UI.loadProjects();
+
+        const addBtn = document.querySelector('.btn-add');
+        addBtn.removeEventListener('click', e => UI.addProject(e));
+        addBtn.addEventListener('click', e => UI.addProject(e));
+        UI.initProjects();
       })
     );
 
-    const addBtn = document.querySelector('.btn-add');
-    addBtn.addEventListener('click', e => {
-      e.preventDefault();
-      UI.addProject();
-    });
-
-    const btnCancel = document.querySelector('.btn-cancel');
-    btnCancel.addEventListener('click', e => {
-      e.preventDefault();
-      UI.toggleAddProjectForm();
-    });
-
-    const projects = document.querySelectorAll('.project');
-    projects.forEach(project => {
-      project.addEventListener('click', e => {
-        if (!e.target.classList.contains('btn-delete-project')) {
-          UI.activateProject(project.dataset.name);
-        }
-      });
-    });
+    // const projects = document.querySelectorAll('.project');
+    // projects.forEach(project => {
+    //   project.addEventListener('click', e => {
+    //     if (!e.target.classList.contains('btn-delete-project')) {
+    //       UI.activateProject(project.dataset.name);
+    //     }
+    //   });
+    // });
   }
 
-  static loadTodos(projectName) {
-    const currentProjectTitle = document.querySelector(
-      '.current-project-title'
-    );
-    const todos = document.querySelector('.todos');
-    todos.textContent = '';
-    currentProjectTitle.textContent = projectName;
-    const todoList = Storage.getTodoList();
-    todoList
-      .getProject(projectName)
-      .getTodos()
-      .forEach(todo => {
-        UI.createTodo(todo);
-      });
-  }
+  // static loadTodos(projectName) {
+  //   const currentProjectTitle = document.querySelector(
+  //     '.current-project-title'
+  //   );
+  //   const todos = document.querySelector('.todos');
+  //   todos.textContent = '';
+  //   currentProjectTitle.textContent = projectName;
+  //   const todoList = Storage.getTodoList();
+  //   todoList
+  //     .getProject(projectName)
+  //     .getTodos()
+  //     .forEach(todo => {
+  //       UI.createTodo(todo);
+  //     });
+  // }
 
   static toggleAddProjectForm() {
     const form = document.querySelector('.form-add-project');
@@ -95,25 +91,28 @@ export default class UI {
           `;
   };
 
-  static addProject() {
+  static addProject(e) {
+    e.preventDefault();
     const input = document.querySelector('#project-name');
     const projectName = input.value;
     input.value = '';
     UI.toggleAddProjectForm();
     Storage.addProject(new Project(projectName));
-    UI.activateProject(projectName);
+    // UI.activateProject(projectName);
+    UI.loadProjects();
+    UI.initProjects();
   }
 
-  static deleteProject(elementToRemove) {
-    Storage.deleteProject(elementToRemove.dataset.name);
-    elementToRemove.remove();
-    UI.loadHome();
-  }
+  // static deleteProject(elementToRemove) {
+  //   Storage.deleteProject(elementToRemove.dataset.name);
+  //   elementToRemove.remove();
+  //   UI.loadHome();
+  // }
 
-  static activateProject(projectName) {
-    UI.currentProject = projectName;
-    UI.loadHome();
-  }
+  // static activateProject(projectName) {
+  //   UI.currentProject = projectName;
+  //   UI.loadHome();
+  // }
 
   static createTodo(todo) {
     const todoList = document.querySelector('.todos');
@@ -146,5 +145,4 @@ export default class UI {
   }
 }
 
-// @todo
-// figure out why the event listeners fire too many times
+// figure out where to move initialization of form buttons...
