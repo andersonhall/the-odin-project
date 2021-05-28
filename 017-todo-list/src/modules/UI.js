@@ -5,6 +5,10 @@ export default class UI {
   static currentProject = 'My Todos';
 
   static loadHome = () => {
+    if (localStorage.getItem('todoList') === null) {
+      const todoList = Storage.getTodoList();
+      localStorage.setItem('todoList', JSON.stringify(todoList));
+    }
     UI.initProjectForm();
     UI.loadProjects();
     UI.initProjects();
@@ -160,11 +164,11 @@ export default class UI {
   }
 }
 
-// delete todos -- only works after 1st click???
-
 // add todos
 // show todo description
 // edit todo description
+
 // edit due date
 // display due dates better
+
 // make alerts look better
