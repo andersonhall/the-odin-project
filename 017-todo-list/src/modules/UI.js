@@ -181,7 +181,7 @@ export default class UI {
       <input id="todo-title" name="todo-title" type="text" value="${todo.getTitle()}" />
       <label for="todo-priority">Priority</label>
       <select id="todo-priority" name="todo-priority">
-        <option value="" ${todo.priority === 'low' ? 'selected' : ''}>Low</option>
+        <option value="low" ${todo.priority === 'low' ? 'selected' : ''}>Low</option>
         <option value="med" ${todo.priority === 'med' ? 'selected' : ''}>Medium</option>
         <option value="high" ${todo.priority === 'high' ? 'selected' : ''}>High</option>
       </select>
@@ -196,14 +196,19 @@ export default class UI {
     const todoDueDate = new Date(todo.getDueDate());
     const todoSaveBtn = document.querySelector('#todo-save-btn');
     todoForm.style.display = 'flex';
-    todoSaveBtn.addEventListener('click', (e, todo) => {
+    todoSaveBtn.addEventListener('click', e => {
       e.preventDefault();
-      UI.saveTodoForm(todo);
+      UI.saveTodoForm(todo.getTitle());
+      UI.reloadTodos();
     });
   }
 
-  static saveTodoForm(todo) {
-    console.log(todo);
+  static saveTodoForm(todoTitle) {
+    const title = document.querySelector('#todo-title').value;
+    const priority = document.querySelector('#todo-priority').value;
+    let dueDate = document.querySelector('#todo-due-date').value;
+    const description = document.querySelector('#todo-description').value;
+    Storage.saveTodoForm(UI.currentProject, todoTitle, title, priority, dueDate, description);
     UI.hideTodoDetails();
   }
 
@@ -212,8 +217,6 @@ export default class UI {
     todoForm.style.display = 'none';
   }
 }
-
-// edit todo
 
 // add todos
 

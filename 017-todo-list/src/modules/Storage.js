@@ -45,4 +45,21 @@ export default class Storage {
     todoList.getProject(projectToEdit).deleteTodo(todo);
     Storage.saveTodoList(todoList);
   }
+
+  static saveTodoForm(project, todoTitle, title, priority, dueDate, description) {
+    const todoList = Storage.getTodoList();
+    const todo = todoList.getProject(project).getTodo(todoTitle);
+    console.log(todo);
+    if (!title) {
+      return alert('must provide a title');
+    }
+    if (!dueDate) {
+      dueDate = 'No due date';
+    }
+    todo.setTitle(title);
+    todo.setPriority(priority);
+    todo.setDueDate(dueDate);
+    todo.setDescription(description);
+    Storage.saveTodoList(todoList);
+  }
 }
