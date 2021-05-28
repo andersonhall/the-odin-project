@@ -49,7 +49,6 @@ export default class Storage {
   static saveTodoForm(project, todoTitle, title, priority, dueDate, description) {
     const todoList = Storage.getTodoList();
     const todo = todoList.getProject(project).getTodo(todoTitle);
-    console.log(todo);
     if (!title) {
       return alert('must provide a title');
     }

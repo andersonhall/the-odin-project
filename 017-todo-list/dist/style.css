@@ -141,8 +141,7 @@ tr:nth-child(even) {
 }
 
 .todo-details-form {
-  /* change to none */
-  display: flex;
+  display: none;
   flex-direction: column;
   background: red;
   padding: 2rem;
@@ -204,18 +203,30 @@ tr:nth-child(even) {
 .project:hover,
 .active-project,
 .todo:hover,
+.btn-add-todo:hover,
 .btn-project-form:hover,
-.form-add-project button:hover {
+.form-add-project button:hover,
+.form-add-todo button:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-light);
 }
 
 /* Project Form */
-.form-add-project {
+.form-add-project,
+.form-add-todo {
   display: none;
 }
 
-.form-add-project input {
+.form-add-todo {
+  position: absolute;
+  width: 250px;
+  background-color: var(--secondary-light);
+  padding: 1rem;
+  flex-direction: column;
+}
+
+.form-add-project input,
+.form-add-todo input {
   border: none;
   font-size: 2rem;
   width: 100%;
@@ -223,12 +234,13 @@ tr:nth-child(even) {
   margin-top: 10px;
 }
 
-.form-add-project button {
+.form-add-project button,
+.form-add-todo button {
   padding: 0.3rem;
   margin: 5px auto;
   width: 100%;
 }
 
 .show {
-  display: inherit;
+  display: flex;
 }

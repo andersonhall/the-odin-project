@@ -10,6 +10,7 @@ export default class UI {
       localStorage.setItem('todoList', JSON.stringify(todoList));
     }
     UI.initProjectForm();
+    UI.initTodoForm();
     UI.loadProjects();
     UI.initProjects();
     UI.loadTodos(UI.currentProject);
@@ -23,6 +24,11 @@ export default class UI {
     btnCancel.addEventListener('click', UI.toggleAddProjectForm);
     const addBtn = document.querySelector('.btn-add');
     addBtn.addEventListener('click', e => UI.addProject(e));
+  }
+
+  static initTodoForm() {
+    const btn = document.querySelector('.btn-add-todo');
+    btn.addEventListener('click', UI.toggleAddTodoForm);
   }
 
   static loadProjects() {
@@ -101,6 +107,11 @@ export default class UI {
     form.classList.toggle('show');
   }
 
+  static toggleAddTodoForm() {
+    const form = document.querySelector('.form-add-todo');
+    form.classList.toggle('show');
+  }
+
   static createProject = name => {
     const projects = document.querySelector('.projects');
     projects.innerHTML += `
@@ -139,6 +150,15 @@ export default class UI {
       Storage.addProject(new Project(projectName));
       UI.activateProject(projectName);
     }
+  }
+
+  static addTodo(e) {
+    e.preventDefault();
+    const title = document.querySelector('.new-todo-title').value;
+    const priority = document.querySelector('.new-todo-priority').value;
+    const dueDate = document.querySelector('.new-todo-dueDate').value;
+    const description = document.querySelector('.new-todo-description').value;
+    console.log(title, priority, dueDate, description);
   }
 
   static activateProject(projectName) {
@@ -181,9 +201,9 @@ export default class UI {
       <input id="todo-title" name="todo-title" type="text" value="${todo.getTitle()}" />
       <label for="todo-priority">Priority</label>
       <select id="todo-priority" name="todo-priority">
-        <option value="low" ${todo.priority === 'low' ? 'selected' : ''}>Low</option>
-        <option value="med" ${todo.priority === 'med' ? 'selected' : ''}>Medium</option>
-        <option value="high" ${todo.priority === 'high' ? 'selected' : ''}>High</option>
+        <option value="low" ${todo.getPriority() === 'low' ? 'selected' : ''}>Low</option>
+        <option value="med" ${todo.getPriority() === 'med' ? 'selected' : ''}>Medium</option>
+        <option value="high" ${todo.getPriority() === 'high' ? 'selected' : ''}>High</option>
       </select>
       <label for="todo-due-date">Due Date</label>
       <input id="todo-due-date" name="todo-due-date" type="date" value="${
@@ -193,7 +213,6 @@ export default class UI {
       <textarea id="todo-description" name="todo-description">${todo.getDescription()}</textarea>
       <button id="todo-save-btn">Save</button>
     `;
-    const todoDueDate = new Date(todo.getDueDate());
     const todoSaveBtn = document.querySelector('#todo-save-btn');
     todoForm.style.display = 'flex';
     todoSaveBtn.addEventListener('click', e => {
