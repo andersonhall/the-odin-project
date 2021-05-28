@@ -3,7 +3,6 @@ export default class Project {
     this.name = name;
     this.todos = [];
   }
-
   getName = () => this.name;
   setName = name => (this.name = name);
 
@@ -12,8 +11,7 @@ export default class Project {
 
   addTodo = todo => this.todos.push(todo);
 
-  deleteTodo = todoName => {
-    const todoToDelete = this.todos.find(todo => todo.getName() == todoName);
+  deleteTodo = todoToDelete => {
     this.todos.splice(this.todos.indexOf(todoToDelete), 1);
   };
 }

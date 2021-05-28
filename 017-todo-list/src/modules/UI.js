@@ -1,11 +1,8 @@
 import Project from './Project';
-import Todo from './Todo';
-import TodoList from './TodoList';
 import Storage from './Storage';
 
 export default class UI {
   static currentProject = 'My Todos';
-  static currentTodo = null;
 
   static loadHome = () => {
     UI.initProjectForm();
@@ -77,23 +74,14 @@ export default class UI {
       });
     });
 
-    // const deleteBtns = document.querySelectorAll('.delete-todo');
-    // deleteBtns.forEach(btn =>
-    //   btn.addEventListener('click', e => {
-    //     // const todo = e.target.dataset.name;
-    //     // Storage.deleteTodo(todo);
-    //     // UI.reloadTodos();
-    //   })
-    // );
-
-    // const projects = document.querySelectorAll('.project');
-    // projects.forEach(project => {
-    //   project.addEventListener('click', e => {
-    //     if (!e.target.classList.contains('btn-delete-project')) {
-    //       UI.activateProject(project.dataset.name);
-    //     }
-    //   });
-    // });
+    const deleteBtns = document.querySelectorAll('.delete-todo');
+    deleteBtns.forEach(btn =>
+      btn.addEventListener('click', e => {
+        const todoName = e.target.dataset.name;
+        Storage.deleteTodo(UI.currentProject, todoName);
+        UI.reloadTodos();
+      })
+    );
   }
 
   static toggleAddProjectForm() {
@@ -141,12 +129,6 @@ export default class UI {
     }
   }
 
-  static deleteProject(elementToRemove) {
-    Storage.deleteProject(elementToRemove.dataset.name);
-    elementToRemove.remove();
-    UI.reloadProjects();
-  }
-
   static activateProject(projectName) {
     UI.currentProject = projectName;
     UI.reloadProjects();
@@ -171,16 +153,16 @@ export default class UI {
         <span class='todo-dueDate'>${todo.dueDate}</span>
       </td>
       <td>
-        <i class='fas fa-trash-alt delete-todo'></i>
+        <i class='fas fa-trash-alt delete-todo' data-name='${todo.title}'></i>
       </td>
     </tr>
     `;
   }
 }
 
+// delete todos -- only works after 1st click???
+
 // add todos
-// mark todos done
-// delete todos
 // show todo description
 // edit todo description
 // edit due date
