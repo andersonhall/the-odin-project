@@ -99,9 +99,8 @@ tr:nth-child(even) {
 
 /* Left Sidebar */
 .sidebar-left {
-  flex: 2;
-  min-width: 200px;
-  max-width: 300px;
+  flex: 1;
+  min-width: 300px;
   background-color: var(--secondary-light);
   color: var(--secondary-dark);
   padding: 2rem 3rem;
@@ -117,6 +116,7 @@ tr:nth-child(even) {
 .main-content {
   display: flex;
   width: 100%;
+  flex: 7;
 }
 
 .main-content-left,
@@ -125,7 +125,6 @@ tr:nth-child(even) {
 }
 
 .main-content-left {
-  width: 40%;
   flex: 1.5;
 }
 
@@ -135,10 +134,6 @@ tr:nth-child(even) {
 
 .main-content-left table {
   width: 100%;
-}
-
-.todo {
-  margin-left: 5px;
 }
 
 .todo:hover {

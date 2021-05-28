@@ -55,9 +55,7 @@ export default class UI {
   }
 
   static loadTodos(projectName) {
-    const currentProjectTitle = document.querySelector(
-      '.current-project-title'
-    );
+    const currentProjectTitle = document.querySelector('.current-project-title');
     const todos = document.querySelector('.todos');
     todos.textContent = '';
     currentProjectTitle.textContent = projectName;
@@ -74,8 +72,7 @@ export default class UI {
     const checkboxes = document.querySelectorAll('.checkbox');
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('click', e => {
-        const todo =
-          e.target.parentElement.nextElementSibling.children[0].textContent;
+        const todo = e.target.parentElement.nextElementSibling.children[0].textContent;
         Storage.toggleTodoIsDone(UI.currentProject, todo);
         UI.reloadTodos();
       });
@@ -107,13 +104,9 @@ export default class UI {
   static createProject = name => {
     const projects = document.querySelector('.projects');
     projects.innerHTML += `
-      <li class='project ${
-        UI.currentProject === name ? 'active-project' : ''
-      }' data-name='${name}'>
+      <li class='project ${UI.currentProject === name ? 'active-project' : ''}' data-name='${name}'>
         <div>
-          <i class='fas fa-folder${
-            UI.currentProject === name ? '-open' : ''
-          }'></i>
+          <i class='fas fa-folder${UI.currentProject === name ? '-open' : ''}'></i>
           <span>${name}</span>
         </div>
         <div>
@@ -152,28 +145,21 @@ export default class UI {
     UI.currentProject = projectName;
     UI.reloadProjects();
     UI.reloadTodos();
+    UI.hideTodoDetails();
   }
 
   static createTodo(todo) {
     const todoList = document.querySelector('.todos');
     todoList.innerHTML += `
     <tr class="todo" style='border-left: 5px solid ${
-      todo.priority === 'high'
-        ? 'red'
-        : todo.priority === 'med'
-        ? 'yellow'
-        : 'green'
+      todo.priority === 'high' ? 'red' : todo.priority === 'med' ? 'yellow' : 'green'
     }'>
       <td>
-        <i class='far fa-${
-          todo.isDone ? 'check-circle' : 'circle'
-        } checkbox'></i>
+        <i class='far fa-${todo.isDone ? 'check-circle' : 'circle'} checkbox'></i>
       </td>
       <td>
       <span class='todo-title' ${
-        todo.isDone
-          ? 'style="text-decoration: line-through; font-style: italic"'
-          : ''
+        todo.isDone ? 'style="text-decoration: line-through; font-style: italic"' : ''
       }>${todo.title}</span>
       </td>
       <td>
@@ -187,9 +173,7 @@ export default class UI {
   }
 
   static loadTodoDetails(todoTitle) {
-    const todo = Storage.getTodoList()
-      .getProject(UI.currentProject)
-      .getTodo(todoTitle);
+    const todo = Storage.getTodoList().getProject(UI.currentProject).getTodo(todoTitle);
     const todoForm = document.querySelector('.todo-details-form');
     todoForm.innerHTML = '';
     todoForm.innerHTML = `
@@ -197,42 +181,40 @@ export default class UI {
       <input id="todo-title" name="todo-title" type="text" value="${todo.getTitle()}" />
       <label for="todo-priority">Priority</label>
       <select id="todo-priority" name="todo-priority">
-        <option value="" ${
-          todo.priority === 'low' ? 'selected' : ''
-        }>Low</option>
-        <option value="med" ${
-          todo.priority === 'med' ? 'selected' : ''
-        }>Medium</option>
-        <option value="high" ${
-          todo.priority === 'high' ? 'selected' : ''
-        }>High</option>
+        <option value="" ${todo.priority === 'low' ? 'selected' : ''}>Low</option>
+        <option value="med" ${todo.priority === 'med' ? 'selected' : ''}>Medium</option>
+        <option value="high" ${todo.priority === 'high' ? 'selected' : ''}>High</option>
       </select>
+      <label for="todo-due-date">Due Date</label>
+      <input id="todo-due-date" name="todo-due-date" type="date" value="${
+        todo.getDueDate() !== 'No due date' ? todo.getDueDate() : ''
+      }"></input>
       <label for="todo-description">Description</label>
-      <textarea id="todo-description" name="todo-description"></textarea>
+      <textarea id="todo-description" name="todo-description">${todo.getDescription()}</textarea>
       <button id="todo-save-btn">Save</button>
     `;
-    const todoDescriptionEl = document.querySelector('#todo-description');
-    const todoPriorityEl = document.querySelector('#todo-priority');
+    const todoDueDate = new Date(todo.getDueDate());
     const todoSaveBtn = document.querySelector('#todo-save-btn');
-    todoDescriptionEl.value = todo.getDescription();
     todoForm.style.display = 'flex';
     todoSaveBtn.addEventListener('click', (e, todo) => {
       e.preventDefault();
-      UI.updateTodo(todo);
+      UI.saveTodoForm(todo);
     });
   }
 
-  static updateTodo(todo) {
+  static saveTodoForm(todo) {
     console.log(todo);
+    UI.hideTodoDetails();
+  }
+
+  static hideTodoDetails() {
+    const todoForm = document.querySelector('.todo-details-form');
+    todoForm.style.display = 'none';
   }
 }
 
-// show todo priority in details pane
+// edit todo
 
 // add todos
-// edit todo description
-
-// edit due date
-// display due dates better
 
 // make alerts look better
