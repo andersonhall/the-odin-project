@@ -55,7 +55,9 @@ export default class UI {
   }
 
   static loadTodos(projectName) {
-    const currentProjectTitle = document.querySelector('.current-project-title');
+    const currentProjectTitle = document.querySelector(
+      '.current-project-title'
+    );
     const todos = document.querySelector('.todos');
     todos.textContent = '';
     currentProjectTitle.textContent = projectName;
@@ -72,7 +74,8 @@ export default class UI {
     const checkboxes = document.querySelectorAll('.checkbox');
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('click', e => {
-        const todo = e.target.parentElement.nextElementSibling.children[0].textContent;
+        const todo =
+          e.target.parentElement.nextElementSibling.children[0].textContent;
         Storage.toggleTodoIsDone(UI.currentProject, todo);
         UI.reloadTodos();
       });
@@ -104,9 +107,13 @@ export default class UI {
   static createProject = name => {
     const projects = document.querySelector('.projects');
     projects.innerHTML += `
-      <li class='project ${UI.currentProject === name ? 'active-project' : ''}' data-name='${name}'>
+      <li class='project ${
+        UI.currentProject === name ? 'active-project' : ''
+      }' data-name='${name}'>
         <div>
-          <i class='fas fa-folder${UI.currentProject === name ? '-open' : ''}'></i>
+          <i class='fas fa-folder${
+            UI.currentProject === name ? '-open' : ''
+          }'></i>
           <span>${name}</span>
         </div>
         <div>
@@ -151,14 +158,22 @@ export default class UI {
     const todoList = document.querySelector('.todos');
     todoList.innerHTML += `
     <tr class="todo" style='border-left: 5px solid ${
-      todo.priority === 'high' ? 'red' : todo.priority === 'med' ? 'yellow' : 'green'
+      todo.priority === 'high'
+        ? 'red'
+        : todo.priority === 'med'
+        ? 'yellow'
+        : 'green'
     }'>
       <td>
-        <i class='far fa-${todo.isDone ? 'check-circle' : 'circle'} checkbox'></i>
+        <i class='far fa-${
+          todo.isDone ? 'check-circle' : 'circle'
+        } checkbox'></i>
       </td>
       <td>
       <span class='todo-title' ${
-        todo.isDone ? 'style="text-decoration: line-through; font-style: italic"' : ''
+        todo.isDone
+          ? 'style="text-decoration: line-through; font-style: italic"'
+          : ''
       }>${todo.title}</span>
       </td>
       <td>
@@ -172,14 +187,43 @@ export default class UI {
   }
 
   static loadTodoDetails(todoTitle) {
-    const todo = Storage.getTodoList().getProject(UI.currentProject).getTodo(todoTitle);
+    const todo = Storage.getTodoList()
+      .getProject(UI.currentProject)
+      .getTodo(todoTitle);
     const todoForm = document.querySelector('.todo-details-form');
-    const todoTitleEl = document.querySelector('#todo-title');
+    todoForm.innerHTML = '';
+    todoForm.innerHTML = `
+      <label for="todo-title">Title</label>
+      <input id="todo-title" name="todo-title" type="text" value="${todo.getTitle()}" />
+      <label for="todo-priority">Priority</label>
+      <select id="todo-priority" name="todo-priority">
+        <option value="" ${
+          todo.priority === 'low' ? 'selected' : ''
+        }>Low</option>
+        <option value="med" ${
+          todo.priority === 'med' ? 'selected' : ''
+        }>Medium</option>
+        <option value="high" ${
+          todo.priority === 'high' ? 'selected' : ''
+        }>High</option>
+      </select>
+      <label for="todo-description">Description</label>
+      <textarea id="todo-description" name="todo-description"></textarea>
+      <button id="todo-save-btn">Save</button>
+    `;
     const todoDescriptionEl = document.querySelector('#todo-description');
-    const todoSaveBtn = document.querySelector('#todoSaveBtn');
-    todoTitleEl.value = todo.getTitle();
+    const todoPriorityEl = document.querySelector('#todo-priority');
+    const todoSaveBtn = document.querySelector('#todo-save-btn');
     todoDescriptionEl.value = todo.getDescription();
     todoForm.style.display = 'flex';
+    todoSaveBtn.addEventListener('click', (e, todo) => {
+      e.preventDefault();
+      UI.updateTodo(todo);
+    });
+  }
+
+  static updateTodo(todo) {
+    console.log(todo);
   }
 }
 
