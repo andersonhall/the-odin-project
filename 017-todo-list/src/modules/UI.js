@@ -86,6 +86,14 @@ export default class UI {
         UI.reloadTodos();
       })
     );
+
+    const todos = document.querySelectorAll('.todo-title');
+    todos.forEach(todo => {
+      const todoTitle = todo.textContent;
+      todo.addEventListener('click', e => {
+        UI.loadTodoDetails(todoTitle);
+      });
+    });
   }
 
   static toggleAddProjectForm() {
@@ -162,10 +170,22 @@ export default class UI {
     </tr>
     `;
   }
+
+  static loadTodoDetails(todoTitle) {
+    const todo = Storage.getTodoList().getProject(UI.currentProject).getTodo(todoTitle);
+    const todoForm = document.querySelector('.todo-details-form');
+    const todoTitleEl = document.querySelector('#todo-title');
+    const todoDescriptionEl = document.querySelector('#todo-description');
+    const todoSaveBtn = document.querySelector('#todoSaveBtn');
+    todoTitleEl.value = todo.getTitle();
+    todoDescriptionEl.value = todo.getDescription();
+    todoForm.style.display = 'flex';
+  }
 }
 
+// show todo priority in details pane
+
 // add todos
-// show todo description
 // edit todo description
 
 // edit due date

@@ -52,7 +52,8 @@ button {
   outline: none;
 }
 
-input {
+input,
+textarea {
   font-family: inherit;
   font-size: inherit;
   outline: none;
@@ -122,12 +123,35 @@ tr:nth-child(even) {
   padding: 2rem 3rem;
 }
 
+.main-content-left {
+  width: 40%;
+}
+
+.main-content-left table {
+  width: 100%;
+}
+
 .todo {
   margin-left: 5px;
 }
 
 .todo:hover {
   cursor: pointer;
+}
+
+.todo-details-form {
+  /* change to none */
+  display: flex;
+  flex-direction: column;
+  background: red;
+  padding: 2rem;
+  width: 100%;
+  background-color: var(--secondary-light);
+}
+
+.todo-details-form textarea,
+#todo-save-btn {
+  margin-top: 1rem;
 }
 
 /* Footer */

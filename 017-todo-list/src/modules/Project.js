@@ -9,6 +9,8 @@ export default class Project {
   getTodos = () => this.todos;
   setTodos = todos => (this.todos = todos);
 
+  getTodo = todoName => this.todos.find(todo => todo.getTitle() === todoName);
+
   addTodo = todo => this.todos.push(todo);
 
   deleteTodo = todoToDelete => {
