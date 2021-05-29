@@ -5,21 +5,9 @@ import Todo from './Todo';
 export default class TodoList {
   constructor() {
     // for testing set up some todos
-    const project1 = new Project('My Todos');
-    const todo = new Todo(
-      'take out the garbage',
-      'longer description of a todo',
-      '2021-05-29',
-      'high',
-      false
-    );
-    const todo2 = new Todo('work on projects', 'desc2', 'No due date', 'low', true);
-    project1.setTodos([todo, todo2]);
-    //
+    const defaultProject = new Project('My Todos');
     this.projects = [];
-    this.projects.push(project1);
-    this.projects.push(new Project('Art Lesson for 5/25'));
-    this.projects.push(new Project('Tuesday class'));
+    this.projects.push(defaultProject);
   }
 
   getProjects = () => this.projects;
