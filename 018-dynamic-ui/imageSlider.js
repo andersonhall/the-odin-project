@@ -8,6 +8,7 @@ const imageSlider = (() => {
   let translateX = 0;
 
   const previousSlide = () => {
+    clearInterval(autoPlay);
     if (index > 1) {
       translateX += 600;
       container.style.transform = `translateX(${translateX}px)`;
