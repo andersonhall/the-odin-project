@@ -7,6 +7,20 @@ module.exports = {
     index: './src/index.js',
     print: './src/print.js',
   },
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [['@babel/preset-env', { targets: 'defaults' }]],
+          },
+        },
+      },
+    ],
+  },
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
