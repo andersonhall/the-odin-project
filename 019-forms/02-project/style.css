@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+form * {
+  font-family: inherit;
+}
+
+form {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 300px;
+}
+
+input {
+  margin: 0.5rem 0 1rem 0;
+  outline: none;
+}
+
+input:invalid {
+  border: 1px solid tomato;
+}
+
+input:valid {
+  border: 1px solid black;
+}
+
+button {
+  border: 1px solid dodgerblue;
+  background-color: dodgerblue;
+  color: white;
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.error {
+  height: 0;
+}
+
+.error-msg {
+  border: 1px solid tomato;
+  border-top: 0;
+  border-radius: 5px;
+  background-color: tomato;
+  width: 300px;
+  display: flex;
+  padding: 1rem;
+}
