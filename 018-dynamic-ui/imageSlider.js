@@ -7,18 +7,18 @@ const imageSlider = (() => {
   let translateX = 0;
 
   const previousSlide = () => {
-    if (index < images.length) {
-      container.style.transform = `translateX(${translateX - 600}px)`;
-      index++;
-      translateX -= 600;
-    }
-  };
-
-  const nextSlide = () => {
     if (index !== 1) {
       container.style.transform = `translateX(${translateX + 600}px)`;
       index--;
       translateX += 600;
+    }
+  };
+
+  const nextSlide = () => {
+    if (index < images.length) {
+      container.style.transform = `translateX(${translateX - 600}px)`;
+      index++;
+      translateX -= 600;
     }
   };
 

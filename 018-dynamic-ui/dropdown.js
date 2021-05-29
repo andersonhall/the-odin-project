@@ -3,8 +3,7 @@ const dropdown = (() => {
   const hamburger = document.querySelector('.fa-bars');
 
   const toggleNav = e => {
-    nav.style.transform =
-      nav.style.transform === 'translateY(0px)' ? 'translateY(-100%)' : 'translateY(0px)';
+    nav.style.display = nav.style.display === 'inline' ? 'none' : 'inline';
   };
 
   hamburger.addEventListener('click', toggleNav);

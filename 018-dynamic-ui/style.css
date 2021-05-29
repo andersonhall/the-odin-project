@@ -59,6 +59,7 @@ body {
   margin-bottom: 3.5rem;
   width: 80vw;
   margin: 0 auto;
+  padding: 5rem;
 }
 
 /* Footer */
@@ -85,12 +86,9 @@ body {
 .nav-links {
   background-color: var(--secondary-dark);
   list-style: none;
-  display: inline;
+  display: none;
   position: absolute;
   right: 10%;
-  transform: translateY(-100%);
-  transition: transform 300ms;
-  z-index: -1;
 }
 
 .nav-link {
