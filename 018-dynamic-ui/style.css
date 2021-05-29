@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --primary-dark: #333;
+  --secondary-dark: #444;
+  --primary-light: #eee;
+  --secondary-light: #ddd;
+  --header-height: 10rem;
+  --footer-height: 4rem;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  /* helpful when creating basic structure */
+  /* border: 1px solid black; */
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6;
+
+  /* footer support */
+  position: relative; /* makes html an element which footer sticks to */
+  min-height: 100%; /* not necessary when main takes all available space */
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--primary-dark);
+  background-color: var(--primary-light);
+  overflow: hidden;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 3rem;
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  height: var(--header-height);
+  padding: 0 10%;
+}
+
+/* Main */
+
+.main {
+  display: flex;
+  /* min-height: calc(100vh - header_height - footer_height) */
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  margin-bottom: 3.5rem;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+/* Footer */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  height: var(--footer-height);
+}
+
+/* Dropdown */
+.fa-bars:hover {
+  cursor: pointer;
+}
+
+.nav-links {
+  background-color: var(--secondary-dark);
+  list-style: none;
+  display: inline;
+  position: absolute;
+  right: 10%;
+  transform: translateY(-100%);
+  transition: transform 300ms;
+  z-index: -1;
+}
+
+.nav-link {
+  color: var(--secondary-light);
+  text-decoration: none;
+  margin: 25px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Image Slider */
+.image-slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem auto;
+  width: 600px;
+  height: 500px;
+  position: relative;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  color: var(--secondary-light);
+  font-size: 4rem;
+  height: 100%;
+  opacity: 0.1;
+}
+
+.img-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  display: flex;
+  overflow: hidden;
+}
+
+.img-container-inner {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  z-index: 0;
+  transition: transform 300ms;
+}
+
+.left:hover,
+.right:hover {
+  background-color: var(--secondary-light);
+  opacity: 0.2;
+  color: var(--secondary-dark);
+  cursor: pointer;
+}
