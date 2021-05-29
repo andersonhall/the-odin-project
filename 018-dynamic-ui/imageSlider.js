@@ -8,22 +8,45 @@ const imageSlider = (() => {
   let translateX = 0;
 
   const previousSlide = () => {
-    if (index !== 1) {
+    if (index > 1) {
       translateX += 600;
       container.style.transform = `translateX(${translateX}px)`;
       index--;
-    }
-  };
-
-  const nextSlide = () => {
-    if (index < images.length) {
-      translateX -= 600;
+    } else {
+      index = images.length - 1;
+      translateX = index * -600;
       container.style.transform = `translateX(${translateX}px)`;
       index++;
     }
   };
 
+  const nextSlide = () => {
+    clearInterval(autoPlay);
+    if (index < images.length) {
+      translateX -= 600;
+      container.style.transform = `translateX(${translateX}px)`;
+      index++;
+    } else {
+      index = 1;
+      translateX = 0;
+      container.style.transform = `translateX(${translateX}px)`;
+    }
+  };
+
+  const autoScroll = () => {
+    if (index < images.length) {
+      translateX -= 600;
+      container.style.transform = `translateX(${translateX}px)`;
+      index++;
+    } else {
+      index = 1;
+      translateX = 0;
+      container.style.transform = `translateX(${translateX}px)`;
+    }
+  };
+
   const scrollToImage = e => {
+    clearInterval(autoPlay);
     translateX = e.target.dataset.index * -600;
     container.style.transform = `translateX(${translateX}px)`;
     index = parseInt(e.target.dataset.id);
@@ -67,10 +90,12 @@ const imageSlider = (() => {
 
   const navDots = document.querySelectorAll('.nav-dot');
   navDots.forEach(navDot => {
-    navDot.addEventListener('click', e => scrollToImage(e));
+    navDot.addEventListener('click', e => {
+      scrollToImage(e);
+    });
   });
+
+  const autoPlay = setInterval(() => {
+    autoScroll();
+  }, 2000);
 })();
-
-// add circle navigation
-
-// add auto advance
