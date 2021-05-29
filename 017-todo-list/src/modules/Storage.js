@@ -61,4 +61,11 @@ export default class Storage {
     todo.setDescription(description);
     Storage.saveTodoList(todoList);
   }
+
+  static addTodo(project, title, priority, dueDate, description) {
+    const todoList = Storage.getTodoList();
+    const projectToEdit = todoList.getProject(project);
+    projectToEdit.addTodo(new Todo(title, description, dueDate, priority));
+    Storage.saveTodoList(todoList);
+  }
 }

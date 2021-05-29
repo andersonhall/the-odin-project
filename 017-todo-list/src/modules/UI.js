@@ -29,6 +29,11 @@ export default class UI {
   static initTodoForm() {
     const btn = document.querySelector('.btn-add-todo');
     btn.addEventListener('click', UI.toggleAddTodoForm);
+    const saveBtn = document.querySelector('#new-todo-save-btn');
+    saveBtn.addEventListener('click', e => {
+      e.preventDefault();
+      UI.addTodo();
+    });
   }
 
   static loadProjects() {
@@ -104,11 +109,13 @@ export default class UI {
 
   static toggleAddProjectForm() {
     const form = document.querySelector('.form-add-project');
+    form.reset();
     form.classList.toggle('show');
   }
 
   static toggleAddTodoForm() {
     const form = document.querySelector('.form-add-todo');
+    form.reset();
     form.classList.toggle('show');
   }
 
@@ -152,13 +159,17 @@ export default class UI {
     }
   }
 
-  static addTodo(e) {
-    e.preventDefault();
-    const title = document.querySelector('.new-todo-title').value;
-    const priority = document.querySelector('.new-todo-priority').value;
-    const dueDate = document.querySelector('.new-todo-dueDate').value;
-    const description = document.querySelector('.new-todo-description').value;
-    console.log(title, priority, dueDate, description);
+  static addTodo() {
+    const title = document.querySelector('#new-todo-title').value;
+    const priority = document.querySelector('#new-todo-priority').value;
+    let dueDate = document.querySelector('#new-todo-due-date').value;
+    const description = document.querySelector('#new-todo-description').value;
+    if (!dueDate) {
+      dueDate = 'No due date';
+    }
+    Storage.addTodo(UI.currentProject, title, priority, dueDate, description);
+    UI.toggleAddTodoForm();
+    UI.reloadTodos();
   }
 
   static activateProject(projectName) {
