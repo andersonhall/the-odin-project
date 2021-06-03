@@ -10,8 +10,10 @@ const API = {
           return res.json();
         })
         .then(data => {
-          console.log(data);
-          API.processData(data);
+          return API.processData(data);
+        })
+        .then(processedData => {
+          UI.displayData(processedData);
         })
         .catch(err => {
           console.log(err);
@@ -44,7 +46,7 @@ const API = {
       windDirection: weatherData.wind.deg,
     };
 
-    console.log(data);
+    return data;
   },
 };
 
@@ -54,8 +56,13 @@ const UI = {
     form.addEventListener('submit', e => {
       e.preventDefault();
       API.fetchWeather();
-      form.reset();
     });
+  },
+
+  displayData: data => {
+    const weather = document.querySelector('.weather-info');
+    weather.innerHTML = '';
+    console.log(data);
   },
 };
 
