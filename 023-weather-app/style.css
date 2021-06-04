@@ -118,4 +118,51 @@ button {
 /* weather info */
 .weather-info {
   margin-top: 3rem;
+  background-color: var(--secondary-dark);
+  color: var(--secondary-light);
+  padding: 2rem;
+  border-radius: 5px;
+  width: 600px;
+}
+
+.weather-info-header,
+.weather-info-current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-info-left,
+.weather-info-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.weather-info-details {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-info-details-left,
+.weather-info-details-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-info-details-left .detail-item {
+  width: 70px;
+}
+
+.weather-info-details-right .detail-item {
+  width: 170px;
 }

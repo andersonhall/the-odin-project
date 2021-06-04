@@ -20,8 +20,11 @@ const API = {
         });
   },
   processData: weatherData => {
+    iconCode = weatherData.weather[0].icon;
+
     const data = {
       current: weatherData.weather[0].main,
+      iconUrl: `http://openweathermap.org/img/wn/${iconCode}@2x.png`,
       tempMin: {
         f: Math.round((weatherData.main.temp_min - 273.15) * (9 / 5) + 32),
         c: Math.round(weatherData.main.temp_min - 273.15),
@@ -62,7 +65,60 @@ const UI = {
   displayData: data => {
     const weather = document.querySelector('.weather-info');
     weather.innerHTML = '';
-    console.log(data);
+    weather.innerHTML = `
+      <div class="weather-info-header">
+        <h2>Current Weather</h2>
+        <p>${UI.displayTime()}</p>
+      </div>
+      <div class="weather-info-current">
+        <div class="weather-info-left">
+          <img src="${data.iconUrl}" alt="current weather" />
+          <span>${data.temp.f}&#176</span>
+        </div>
+        <div class="weather-info-right">
+          Feels like ${data.feelsLike.f}&#176
+        </div>
+      </div>
+      <div class="weather-info-phrase">${data.current}</div>
+      <div class="weather-info-details">
+        <div class="weather-info-details-left">
+          <div class="detail-item">
+            <div>High</div>
+            <div>${data.tempMax.f}&#176</div>
+          </div>
+          <div class="detail-item">
+            <div>Low</div>
+            <div>${data.tempMin.f}&#176</div>
+          </div>
+        </div>
+        <div class="weather-info-details-right">
+          <div class="detail-item">
+            <div>Wind Direction</div>
+            <div>${data.windDirection}&#176</div>
+          </div>
+          <div class="detail-item">
+            <div>Wind Speed</div>
+            <div>${parseFloat(data.windSpeed.mph).toFixed(1)} mph</div>
+          </div>
+          <div class="detail-item">
+            <div>Humidity</div>
+            <div>${data.humidity}%</div>
+          </div>
+        </div>
+      </div>
+    `;
+  },
+
+  displayTime: () => {
+    const date = new Date();
+
+    let hour = date.getHours();
+    hour = (hour < 10 ? '0' : '') + hour;
+
+    let min = date.getMinutes();
+    min = (min < 10 ? '0' : '') + min;
+
+    return (hour > 12 ? hour - 12 : hour) + ':' + min + (hour < 12 ? ' am' : ' pm');
   },
 };
 
