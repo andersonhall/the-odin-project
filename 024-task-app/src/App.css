@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --primary-dark: #333;
+  --secondary-dark: #444;
+  --primary-light: #eee;
+  --secondary-light: #ddd;
+  --header-height: 10rem;
+  --footer-height: 4rem;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  /* helpful when creating basic structure */
+  /* border: 1px solid black; */
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6;
+
+  /* footer support */
+  position: relative; /* makes html an element which footer sticks to */
+  min-height: 100%; /* not necessary when main takes all available space */
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--primary-dark);
+  background-color: var(--primary-light);
+}
+
+header {
+  font-size: 3rem;
+}
+
+button {
+  display: block;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.4rem 1rem;
+}
+
+th,
+tr:nth-child(even) {
+  background-color: var(--secondary-light);
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  height: var(--header-height);
+}
+
+/* Main */
+
+.main {
+  display: flex;
+  /* min-height: calc(100vh - header_height - footer_height) */
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  margin-bottom: 3.5rem;
+}
+
+/* Footer */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  height: var(--footer-height);
+}
