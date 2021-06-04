@@ -33,7 +33,6 @@ body {
   font-size: 1.6rem;
   font-family: 'Roboto', sans-serif;
   color: var(--primary-dark);
-  background-color: var(--primary-light);
 }
 
 header {
@@ -50,6 +49,11 @@ button {
   font-size: inherit;
   cursor: pointer;
   outline: none;
+}
+
+button:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-light);
 }
 
 input,
@@ -91,7 +95,6 @@ tr:nth-child(even) {
 /* Main */
 
 .main {
-  display: flex;
   /* min-height: calc(100vh - header_height - footer_height) */
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
   margin-bottom: 3.5rem;
@@ -111,4 +114,45 @@ tr:nth-child(even) {
   background-color: var(--primary-dark);
   color: var(--primary-light);
   height: var(--footer-height);
+}
+
+/* Form */
+#form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form * {
+  margin: 5px;
+}
+
+/* TASKS */
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  list-style: none;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  background-color: var(--secondary-dark);
+  color: var(--secondary-light);
+  padding: 1rem;
+  margin: 0.3rem;
+  cursor: pointer;
+}
+
+i {
+  margin-left: 10px;
+}
+
+i:hover {
+  color: var(--primary-light);
 }

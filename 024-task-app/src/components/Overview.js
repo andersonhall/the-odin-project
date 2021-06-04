@@ -1,11 +1,13 @@
-const Overview = ({ tasks }) => {
+const Overview = ({ tasks, handleDelete }) => {
   return (
     <ul>
       {tasks.map((task, index) => {
         return (
           <li key={task.id}>
             {index + 1}. {task.text}
-            <i className='far fa-trash-alt'></i>
+            <span>
+              <i className='far fa-trash-alt' onClick={() => handleDelete(task.id)}></i>
+            </span>
           </li>
         );
       })}

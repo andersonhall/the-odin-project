@@ -18,14 +18,18 @@ const App = () => {
     setTask({ text: '', id: uniqid() });
   };
 
+  const handleDelete = id => {
+    setTasks([...tasks.filter(task => task.id !== id)]);
+  };
+
   return (
     <div>
-      <form onSubmit={onSubmitTask}>
+      <form onSubmit={onSubmitTask} id='form'>
         <label htmlFor='taskInput'>Enter task</label>
-        <input type='text' id='taskInput' onChange={handleChange} value={task.text} />
+        <input type='text' id='taskInput' onChange={handleChange} value={task.text} required />
         <button type='submit'>Add Task</button>
       </form>
-      <Overview tasks={tasks} />
+      <Overview tasks={tasks} handleDelete={handleDelete} />
     </div>
   );
 };
