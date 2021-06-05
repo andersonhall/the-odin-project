@@ -1,6 +1,7 @@
 import '../styles/CV.css';
+import Education from './Education';
 
-const CV = ({ info, education }) => {
+const CV = ({ info, education, addEducation, deleteEducation }) => {
   return (
     <div>
       <header className='cv-header'>
@@ -20,24 +21,12 @@ const CV = ({ info, education }) => {
             <div className='cv-education'>
               {education.map(obj => {
                 return (
-                  <>
-                    <div>
-                      <strong>University:</strong> {obj.school}
-                    </div>
-                    <div>
-                      <strong>City:</strong> {obj.edCity}
-                    </div>
-                    <div>
-                      <strong>Degree:</strong> {obj.degree}
-                    </div>
-                    <div>
-                      <strong>Subject:</strong> {obj.subject}
-                    </div>
-                    <div>
-                      <strong>Years:</strong> {obj.edFrom}-{obj.edTo}
-                    </div>
-                    <hr />
-                  </>
+                  <Education
+                    key={obj.id}
+                    addEducation={addEducation}
+                    deleteEducation={deleteEducation}
+                    ed={obj}
+                  />
                 );
               })}
             </div>

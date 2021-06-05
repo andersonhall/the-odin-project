@@ -1,4 +1,5 @@
 import './App.css';
+import uniqid from 'uniqid';
 import Header from './components/Header';
 import Info from './components/Info';
 import EducationForm from './components/EducationForm';
@@ -20,6 +21,7 @@ const App = () => {
 
   const [education, setEducation] = useState([
     {
+      id: uniqid(),
       school: 'DSU',
       edCity: 'Cleveland',
       degree: 'BME',
@@ -34,16 +36,31 @@ const App = () => {
     setInfo({ ...info, [id]: value });
   };
 
+  const addEducation = e => {
+    console.log('add ed', e.target);
+  };
+
+  const deleteEducation = id => {
+    if (education.length > 1) {
+      setEducation(education.filter(ed => ed.id !== id));
+    }
+  };
+
   return (
     <div className='App'>
       <Header />
       <section id='form' className='box-shadow'>
         <Info handleChange={handleChange} />
         {education.map((obj, index) => {
-          return <EducationForm key={index} education={education[index]} />;
+          return (
+            <EducationForm
+              key={index}
+              education={education[index]}
+              addEducation={addEducation}
+              deleteEducation={deleteEducation}
+            />
+          );
         })}
-        <button>Add</button>
-        <button>Delete</button>
         <Work />
       </section>
       <section id='cv' className='box-shadow'>
