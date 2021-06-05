@@ -3,6 +3,9 @@ const Work = ({ job }) => {
   return (
     <>
       <div>
+        {workFrom} - {workTo}
+      </div>
+      <div>
         <strong>Position:</strong> {position}
       </div>
       <div>
@@ -10,9 +13,6 @@ const Work = ({ job }) => {
       </div>
       <div>
         <strong>City:</strong> {workCity}
-      </div>
-      <div>
-        <strong>Years:</strong> {workFrom} - {workTo}
       </div>
       <hr />
     </>

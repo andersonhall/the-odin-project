@@ -1,6 +1,10 @@
 #cv {
   margin: 1rem 3rem;
   background-color: var(--primary-light);
+  position: sticky;
+  top: 0;
+  flex: 2;
+  max-height: 80vh;
 }
 
 #cv h4 {

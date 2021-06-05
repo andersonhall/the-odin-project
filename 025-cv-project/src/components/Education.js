@@ -3,6 +3,9 @@ const Education = ({ ed }) => {
   return (
     <>
       <div>
+        {edFrom} - {edTo}
+      </div>
+      <div>
         <strong>University:</strong> {school}
       </div>
       <div>
@@ -13,9 +16,6 @@ const Education = ({ ed }) => {
       </div>
       <div>
         <strong>Subject:</strong> {subject}
-      </div>
-      <div>
-        <strong>Years:</strong> {edFrom} - {edTo}
       </div>
       <hr />
     </>

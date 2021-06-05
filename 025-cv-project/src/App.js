@@ -103,34 +103,36 @@ const App = () => {
   return (
     <div className='App'>
       <Header />
-      <section id='form' className='box-shadow'>
-        <Info handleChange={handleChange} />
-        {education.map((obj, index) => {
-          return (
-            <EducationForm
-              key={index}
-              education={education[index]}
-              addEducation={addEducation}
-              deleteEducation={deleteEducation}
-              updateEd={updateEd}
-            />
-          );
-        })}
-        {work.map((obj, index) => {
-          return (
-            <WorkForm
-              key={index}
-              job={work[index]}
-              addWork={addWork}
-              deleteWork={deleteWork}
-              updateWork={updateWork}
-            />
-          );
-        })}
-      </section>
-      <section id='cv' className='box-shadow'>
-        <CV info={info} education={education} work={work} />
-      </section>
+      <div className='main-content'>
+        <section id='form' className='box-shadow'>
+          <Info handleChange={handleChange} />
+          {education.map((obj, index) => {
+            return (
+              <EducationForm
+                key={index}
+                education={education[index]}
+                addEducation={addEducation}
+                deleteEducation={deleteEducation}
+                updateEd={updateEd}
+              />
+            );
+          })}
+          {work.map((obj, index) => {
+            return (
+              <WorkForm
+                key={index}
+                job={work[index]}
+                addWork={addWork}
+                deleteWork={deleteWork}
+                updateWork={updateWork}
+              />
+            );
+          })}
+        </section>
+        <section id='cv' className='box-shadow'>
+          <CV info={info} education={education} work={work} />
+        </section>
+      </div>
     </div>
   );
 };
