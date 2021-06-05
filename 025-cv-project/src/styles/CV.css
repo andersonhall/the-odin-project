@@ -23,5 +23,6 @@
 }
 
 .sidebar {
+  padding: 2rem;
   flex: 1;
 }

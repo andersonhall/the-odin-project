@@ -9,8 +9,8 @@ import { useState } from 'react';
 
 const App = () => {
   const [info, setInfo] = useState({
-    firstName: 'Andy',
-    lastName: 'Hall',
+    firstName: '',
+    lastName: '',
     title: '',
     address: '',
     phone: '',

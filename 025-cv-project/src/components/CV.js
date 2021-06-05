@@ -24,7 +24,14 @@ const CV = ({ info }) => {
             <div className='cv-experience'>{info.experience}</div>
           </div>
         </div>
-        <div className='sidebar'>SIDEBAR</div>
+        <div className='sidebar'>
+          <div className='personal-info'>
+            <h4>Personal Info</h4>
+            <div className='cv-address'>{info.address}</div>
+            <div className='cv-phone'>{info.phone}</div>
+            <div className='cv-email'>{info.email}</div>
+          </div>
+        </div>
       </div>
     </div>
   );
