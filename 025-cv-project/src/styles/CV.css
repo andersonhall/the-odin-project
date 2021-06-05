@@ -1,0 +1,27 @@
+#cv {
+  margin: 1rem 3rem;
+  background-color: var(--primary-light);
+}
+
+#cv h4 {
+  border-bottom: 1px solid var(--secondary-dark);
+}
+
+.cv-header {
+  padding: 2rem;
+  background-color: var(--secondary-dark);
+  color: var(--primary-light);
+}
+
+.cv-body {
+  display: flex;
+}
+
+.details {
+  padding: 2rem;
+  flex: 2;
+}
+
+.sidebar {
+  flex: 1;
+}
