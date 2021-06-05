@@ -1,6 +1,6 @@
 import '../styles/CV.css';
 
-const CV = ({ info }) => {
+const CV = ({ info, education }) => {
   return (
     <div>
       <header className='cv-header'>
@@ -17,7 +17,30 @@ const CV = ({ info }) => {
           </div>
           <div>
             <h4>Education</h4>
-            <div className='cv-education'>{info.education}</div>
+            <div className='cv-education'>
+              {education.map(obj => {
+                return (
+                  <>
+                    <div>
+                      <strong>University:</strong> {obj.school}
+                    </div>
+                    <div>
+                      <strong>City:</strong> {obj.edCity}
+                    </div>
+                    <div>
+                      <strong>Degree:</strong> {obj.degree}
+                    </div>
+                    <div>
+                      <strong>Subject:</strong> {obj.subject}
+                    </div>
+                    <div>
+                      <strong>Years:</strong> {obj.edFrom}-{obj.edTo}
+                    </div>
+                    <hr />
+                  </>
+                );
+              })}
+            </div>
           </div>
           <div>
             <h4>Experience</h4>
@@ -27,9 +50,18 @@ const CV = ({ info }) => {
         <div className='sidebar'>
           <div className='personal-info'>
             <h4>Personal Info</h4>
-            <div className='cv-address'>{info.address}</div>
-            <div className='cv-phone'>{info.phone}</div>
-            <div className='cv-email'>{info.email}</div>
+            <div>
+              <h5>Address</h5>
+              <div className='cv-address'>{info.address}</div>
+            </div>
+            <div>
+              <h5>Phone Number</h5>
+              <div className='cv-phone'>{info.phone}</div>
+            </div>
+            <div>
+              <h5>Email</h5>
+              <div className='cv-email'>{info.email}</div>
+            </div>
           </div>
         </div>
       </div>

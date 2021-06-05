@@ -1,9 +1,5 @@
 const Education = () => {
-  return (
-    <div>
-      <h3>ED INFO</h3>
-    </div>
-  );
+  return <div>ED OUT</div>;
 };
 
 export default Education;

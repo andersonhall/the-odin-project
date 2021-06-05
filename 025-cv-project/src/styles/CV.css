@@ -5,11 +5,12 @@
 
 #cv h4 {
   border-bottom: 1px solid var(--secondary-dark);
+  color: var(--accent);
 }
 
 .cv-header {
   padding: 2rem;
-  background-color: var(--secondary-dark);
+  background-color: var(--accent);
   color: var(--primary-light);
 }
 
