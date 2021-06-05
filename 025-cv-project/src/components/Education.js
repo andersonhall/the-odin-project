@@ -1,4 +1,4 @@
-const Education = ed => {
+const Education = ({ ed }) => {
   const { school, edCity, degree, subject, edFrom, edTo } = ed;
   return (
     <>
@@ -15,7 +15,7 @@ const Education = ed => {
         <strong>Subject:</strong> {subject}
       </div>
       <div>
-        <strong>Years:</strong> {edFrom}-{edTo}
+        <strong>Years:</strong> {edFrom} - {edTo}
       </div>
       <hr />
     </>

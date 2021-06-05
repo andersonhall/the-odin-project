@@ -1,7 +1,8 @@
 import '../styles/CV.css';
 import Education from './Education';
+import Work from './Work';
 
-const CV = ({ info, education, addEducation, deleteEducation }) => {
+const CV = ({ info, education, work }) => {
   return (
     <div>
       <header className='cv-header'>
@@ -20,20 +21,17 @@ const CV = ({ info, education, addEducation, deleteEducation }) => {
             <h4>Education</h4>
             <div className='cv-education'>
               {education.map(obj => {
-                return (
-                  <Education
-                    key={obj.id}
-                    addEducation={addEducation}
-                    deleteEducation={deleteEducation}
-                    ed={obj}
-                  />
-                );
+                return <Education key={obj.id} ed={obj} />;
               })}
             </div>
           </div>
           <div>
             <h4>Experience</h4>
-            <div className='cv-experience'>{info.experience}</div>
+            <div className='cv-experience'>
+              {work.map(obj => {
+                return <Work key={obj.id} job={obj} />;
+              })}
+            </div>
           </div>
         </div>
         <div className='sidebar'>
