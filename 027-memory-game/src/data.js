@@ -71,6 +71,54 @@ module.exports = [
     name: 'Catwoman',
     id: 165,
   },
+  {
+    name: 'Cyclops',
+    id: 196,
+  },
+  {
+    name: 'Venom',
+    id: 687,
+  },
+  {
+    name: 'Deadpool',
+    id: 213,
+  },
+  {
+    name: 'Ultron',
+    id: 680,
+  },
+  {
+    name: 'Thanos',
+    id: 655,
+  },
+  {
+    name: 'Storm',
+    id: 638,
+  },
+  {
+    name: 'Captain America',
+    id: 149,
+  },
+  {
+    name: 'Solomon Grundy',
+    id: 609,
+  },
+  {
+    name: 'Iceman',
+    id: 339,
+  },
+  {
+    name: 'Beast',
+    id: 75,
+  },
+  {
+    name: 'Scarecrow',
+    id: 576,
+  },
+  {
+    name: 'Howard the Duck',
+    id: 331,
+  },
 ];
 
 // GET MORE @ https://superheroapi.com/ids.html

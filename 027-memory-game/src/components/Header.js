@@ -1,7 +1,7 @@
 const Header = ({ count, highScore, isPlaying }) => {
   return (
     <header>
-      <div>HERO MEMORY</div>
+      <div>Comic Cards Memory Game</div>
       {isPlaying && <div>Current Score: {count}</div>}
       <div>High Score: {highScore}</div>
     </header>
