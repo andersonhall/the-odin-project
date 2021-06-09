@@ -4,15 +4,8 @@ const Product = ({ product, addToCart, removeFromCart }) => {
       <p className='product-name'>{product.name}</p>
       <img src={product.imageUrl} alt={product.name} className='product-image' />
       <p className='product-description'>{product.description}</p>
-      <div className='product-controls'>
-        <h3>Add to Cart</h3>
-        <button className='product-btn plus' onClick={() => addToCart(product.id)}>
-          +
-        </button>
-        <button className='product-btn' onClick={() => removeFromCart(product.id)}>
-          -
-        </button>
-      </div>
+      <p className='product-price'>${product.price}</p>
+      <button onClick={() => addToCart(product.id)}>Add to Cart</button>
     </div>
   );
 };
