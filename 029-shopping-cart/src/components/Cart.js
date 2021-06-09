@@ -1,8 +1,13 @@
-const Cart = () => {
+const Cart = ({ cart }) => {
   return (
-    <div className='cart'>
-      <h1>Cart</h1>
-    </div>
+    <section className='cart'>
+      <h1>Your Cart</h1>
+      <div className='cart-products'>
+        {cart.map(product => (
+          <div>product</div>
+        ))}
+      </div>
+    </section>
   );
 };
 
