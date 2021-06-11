@@ -1,0 +1,15 @@
+{
+  "name": "030-testing-basics",
+  "version": "1.0.0",
+  "main": "sum.js",
+  "devDependencies": {
+    "jest": "^27.0.4"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
