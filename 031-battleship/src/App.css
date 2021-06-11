@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --primary-dark: #333;
+  --secondary-dark: #444;
+  --primary-light: #eee;
+  --secondary-light: #ddd;
+  --accent: dodgerblue;
+  --header-height: 10rem;
+  --footer-height: 4rem;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  /* helpful when creating basic structure */
+  /* border: 1px solid black; */
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6;
+
+  /* footer support */
+  position: relative; /* makes html an element which footer sticks to */
+  min-height: 100%; /* not necessary when main takes all available space */
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--primary-dark);
+  background-color: var(--secondary-light);
+}
+
+button {
+  display: inline-block;
+  padding: 1rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--secondary-dark);
+  color: var(--primary-light);
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+}
+
+.box-shadow {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+  }
+}
