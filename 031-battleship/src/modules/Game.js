@@ -1,16 +1,14 @@
-import { useState } from 'react';
 import Gameboard from '../modules/Gameboard';
 import Player from '../modules/Player';
-import Ship from '../modules/Ship';
 
 const Game = () => {
   const game = Game();
-  const p1 = Player();
-  const p2 = Player('computer');
-  const g1 = Gameboard();
-  const g2 = Gameboard();
+  game.p1 = Player();
+  game.p2 = Player('computer');
+  game.g1 = Gameboard();
+  game.g2 = Gameboard();
 
-  g1.locations = [
+  game.g1.locations = [
     [[], [], [], [], [], [], [1], [1], [], []],
     [[], [1], [], [], [], [], [], [], [], []],
     [[], [1], [], [], [], [], [], [], [], []],
@@ -23,7 +21,7 @@ const Game = () => {
     [[1], [1], [1], [1], [], [], [], [], [], []],
   ];
 
-  g2.locations = [
+  game.g2.locations = [
     [[], [], [], [], [], [], [1], [1], [1], [1]],
     [[], [1], [1], [], [], [], [], [], [], []],
     [[], [], [], [], [], [], [], [], [], []],
@@ -35,6 +33,8 @@ const Game = () => {
     [[], [], [], [], [], [], [], [1], [1], []],
     [[], [], [], [], [], [], [], [], [], []],
   ];
+
+  return game;
 };
 
 export default Game;
