@@ -1,9 +1,9 @@
 const Ship = length => {
   const ship = {};
   ship.length = length;
-  ship.hits = [];
-  ship.isSunk = () => ship.hits.length === length;
-  ship.hit = location => ship.hits.push(location);
+  ship.hits = 0;
+  ship.isSunk = () => ship.hits === length;
+  ship.hit = () => ship.hits++;
 
   return ship;
 };
