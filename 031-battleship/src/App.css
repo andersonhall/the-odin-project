@@ -60,6 +60,50 @@ button:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.header {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--primary-dark);
+  color: var(--secondary-light);
+  margin-bottom: 3rem;
+}
+
+.square {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--primary-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: crosshair;
+}
+
+.water {
+  background-color: dodgerblue;
+}
+
+.hit {
+  background-color: firebrick;
+}
+
+.miss {
+  background-color: forestgreen;
+}
+
+.ship {
+  background-color: gold;
+}
+
+.play-area {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.player-board {
+  display: flex;
+  border: 1px solid var(--primary-dark);
+}
+
 @media (max-width: 900px) {
   .main-content {
     flex-direction: column;

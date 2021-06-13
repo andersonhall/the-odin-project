@@ -1,6 +1,6 @@
 import Ship from '../modules/Ship';
 
-const Player = playerType => {
+const Player = (playerType = 'human') => {
   const p = {};
   p.type = playerType;
   p.ships = [Ship(2), Ship(2), Ship(3), Ship(4), Ship(5)];
