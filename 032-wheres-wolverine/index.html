@@ -6,12 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Where's Wolverine</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="main.js" defer></script>
   </head>
   <body>
     <header class="header">
       <div>Where's Wolverine?</div>
     </header>
-    <img src="./img/wheres-wolverine.jpg" alt="wheres-wolverine" />
+    <div id="bg">
+      <div class="wolverine"></div>
+      <div class="hulk"></div>
+      <div class="spider-man"></div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: 'AIzaSyCqe532KBxlswxN0KN5viV3L3F6ROSoUMY',
+        authDomain: 'wheres-wolverine.firebaseapp.com',
+        projectId: 'wheres-wolverine',
+        storageBucket: 'wheres-wolverine.appspot.com',
+        messagingSenderId: '719683048911',
+        appId: '1:719683048911:web:a551ab32d56c17e2b8eeba',
+        measurementId: 'G-18ZHGLV5H2',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="main.js"></script>
   </body>
 </html>
