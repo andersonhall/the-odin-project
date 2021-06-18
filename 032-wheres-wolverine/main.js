@@ -69,6 +69,12 @@ const Game = (() => {
       const checkAnswer = characterName => {
         const character = characterName.toLowerCase();
 
+        // remove square
+        const square = document.querySelector('.square');
+        const dropDown = document.querySelector('.drop-down');
+        square.remove();
+        dropDown.remove();
+
         // check for found character
         if (
           character === 'wolverine' &&

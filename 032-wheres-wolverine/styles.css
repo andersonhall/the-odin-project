@@ -35,6 +35,7 @@ body {
   font-family: 'Bangers', sans-serif;
   color: var(--primary-dark);
   background-color: var(--secondary-light);
+  width: 1500px;
 }
 
 button {
@@ -114,4 +115,13 @@ img {
 
 ul {
   list-style: none;
+}
+
+.samples {
+  display: flex;
+}
+
+.sample-img {
+  width: 50px;
+  margin-right: 20px;
 }
