@@ -1,0 +1,33 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-search {
+  display: flex;
+  justify-content: center;
+}
+
+.header-search-input {
+  border: 1px solid #ddd;
+  border-radius: 0 2px 2px 0;
+  display: flex;
+}
+
+.header-search input {
+  padding: 0.4rem 0.5rem;
+  border: none;
+  width: 40vw;
+  max-width: 500px;
+}
+
+.header-search button {
+  border: none;
+  background-color: #f8f8f8;
+}
+
+.video {
+  width: 70vw;
+  height: 38vw;
+}
