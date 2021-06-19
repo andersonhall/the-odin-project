@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Video Player Page</title>
   </head>
@@ -23,7 +25,7 @@
         <img src="./img/header-right.png" alt="" height="40" />
       </div>
     </header>
-    <main>
+    <main class="main">
       <section class="main-left">
         <div class="vid-player">
           <iframe
@@ -36,47 +38,31 @@
           ></iframe>
         </div>
         <div class="vid-ribbon">
-          <h3 class="vid-title">The Pursuit of Happyness: Chris is hired</h3>
+          <p class="vid-title">The Pursuit of Happyness: Chris is hired</p>
           <div class="vid-ribbon-bottom">
             <span class="views"> 1,680,854 views • Aug 30, 2020 </span>
             <div class="likes">
-              <div class="like-icons">
-                <div class="thumbs-up">UP</div>
-                <div class="thumbs-down">DOWN</div>
-              </div>
-              <div class="share-save">
-                <div class="share">
-                  <i>SHARE</i>
-                  <span>SHARE</span>
-                </div>
-                <div class="save">
-                  <i>SAVE</i>
-                  <span>SAVE</span>
-                </div>
-                <div class="share-save-dots">DOTS</div>
-              </div>
+              <img src="./img/social.png" alt="social" />
             </div>
           </div>
         </div>
+
         <div class="vid-details">
-          <div class="vid-details-top">
-            <div>IMG</div>
-            <div class="upload-details">
-              <h5>Binge Society - The Greatest Movie Scenes</h5>
+          <div class="vid-details-left">
+            <img src="./img/binge.png" alt="binge-logo" />
+            <div class="vid-details-text">
+              <p class="vid-details-channel">Binge Society - The Greatest Movie Scenes</p>
               <span>2.44M subscribers</span>
-            </div>
-            <button>SUBSCRIBE</button>
-          </div>
-          <div class="vid-details-bottom">
-            <div class="vid-description">
               <div>
                 <p>What's happening in this movie clip?</p>
                 <p>After his internship, Chris (Will Smith) is hired as a broker.</p>
               </div>
-              <p>SHOW MORE</p>
+              <p class="show-more">SHOW MORE</p>
             </div>
           </div>
+          <button>SUBSCRIBE</button>
         </div>
+
         <div class="comments">
           <div class="comments-top">
             <div>
