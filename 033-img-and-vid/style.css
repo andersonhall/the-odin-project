@@ -102,16 +102,14 @@ header {
   align-items: start;
 }
 
+.vid-details * {
+  margin: 4px 0;
+}
+
 .vid-details-left {
   display: flex;
   justify-content: start;
   align-items: start;
-}
-
-.vid-details-text {
-  margin-left: 1rem;
-  height: 110px;
-  line-height: 1.2;
 }
 
 .vid-details-channel {
@@ -129,6 +127,9 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: 1rem;
+  height: 110px;
+  line-height: 1.2;
   font-size: 0.8rem;
 }
 
@@ -147,4 +148,15 @@ header {
 
 .show-more {
   color: #666;
+  margin: 20px 0;
+}
+
+.comments {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.comments-top {
+  margin: 10px 0;
 }
